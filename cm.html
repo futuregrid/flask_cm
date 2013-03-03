@@ -1,0 +1,282 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CM &mdash; Cloud Mesh Web 0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/jquery.hoverscroll.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-responsive.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/jquery.ba-hashchange.js"></script>
+    <script type="text/javascript" src="_static/jquery.hoverscroll.js"></script>
+    <script type="text/javascript" src="_static/bootstrap.js"></script>
+    <script type="text/javascript" src="_static/bootstrap.scrollspy.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Cloud Mesh Web 0.5 documentation" href="index.html" />
+    <link rel="prev" title="Cloud Mesh" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  </head>
+  <body>
+  <div id="navbar" class="navbar navbar-inverse no-js">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="index.html">Cloud Mesh Web</a>
+        <span class="navbar-text pull-left"></span>
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <li><b class="navbar-text">0.5</b></li>
+          
+            <li class="dropdown">
+  <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
+  <ul class="current dropdown-menu">
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instalation.html">Instalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Cloud Mesh</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="">CM</a></li>
+</ul>
+
+</li>
+            
+          
+          
+            
+  <li class="hidden-phone"><a href="intro.html"
+         title="previous chapter">&laquo; Cloud Mesh</a></li>
+          
+          
+            <li>
+  <a href="_sources/cm.txt"
+         rel="nofollow">Source</a></li>
+          
+        </ul>
+        
+          
+<form class="navbar-search pull-right hidden-phone" style="margin-bottom:-3px;" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="body container-fluid">
+  <div class="row-fluid">
+    <div class="content span9">
+      
+      
+  <div class="section" id="cm">
+<h1>CM<a class="headerlink" href="#cm" title="Permalink to this headline">¶</a></h1>
+<p>Setting-up the COmmandline version of Cloud Mesh</p>
+<div class="section" id="use-virtualenv">
+<h2>Use virtualenv<a class="headerlink" href="#use-virtualenv" title="Permalink to this headline">¶</a></h2>
+<p>IF you have not yet done so, please install and use virtualenv.</p>
+<p>Checkout Cloud Mesh:</p>
+<div class="highlight-python"><pre>git clone git://github.com/futuregrid/cm.git</pre>
+</div>
+<p>Activate virtualenv:</p>
+<div class="highlight-python"><pre>. ~/ENV/bin/activate</pre>
+</div>
+<p>Install nova-client if not available:</p>
+<div class="highlight-python"><pre>sudo easy_install pip
+pip install python-novaclient</pre>
+</div>
+<p>For more information see</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.openstack.org/cli/quick-start/content/install_openstack_nova_cli.html">http://docs.openstack.org/cli/quick-start/content/install_openstack_nova_cli.html</a></li>
+</ul>
+<p>Install novaclient:</p>
+<div class="highlight-python"><pre>pip install nova</pre>
+</div>
+<p>Run make:</p>
+<div class="highlight-python"><pre>(ENV) make</pre>
+</div>
+<p>Set the key for Open Stack (You could get this key from your futuregrid account.):</p>
+<div class="highlight-python"><pre>scp gregor@india.futuregrid.org:.futuregrid/openstack/novarc .
+cat novarc
+mkdir -p ~/.futuregrid/openstack/
+cp novarc ~/.futuregrid/openstack/
+source ~/.futuregrid/openstack/novarc</pre>
+</div>
+<p>Type in a nova command to check whether the key was set properly:</p>
+<div class="highlight-python"><pre>$ nova list</pre>
+</div>
+<p>You will see</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="15%" />
+<col width="8%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>ID</td>
+<td>Name</td>
+<td>Status</td>
+<td>Networks</td>
+</tr>
+<tr class="row-even"><td>26a41ff1-72bc-4185-a212-9d6ceXXXXXXX</td>
+<td>Server 47XX</td>
+<td>ACTIVE</td>
+<td>vlanXXX=1X.X.2.3, XXX.XXX.XXX.8</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>If you are getting some table like above then you are good.</p>
+<p>Install euca2ools (if you have not already done so.)</p>
+<div class="highlight-python"><pre>$ sudo apt-get install euca2ools</pre>
+</div>
+<p>Generate euca key pair (this is done wrong we want nova's commands to do that):</p>
+<div class="highlight-python"><pre>$ euca-import-keypair -f ~/.ssh/id_dsa.pub gregor</pre>
+</div>
+<p>List the generated key pair:</p>
+<div class="highlight-python"><pre>$ nova keypair-list</pre>
+</div>
+<p>You will see</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Name</td>
+<td>Fingerprint</td>
+</tr>
+<tr class="row-even"><td>gregor</td>
+<td>shfjpaiuFEHFHEBXPNWUIXEFYBEFYPARUFIYPNERUYFPUEF</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>If you are getting something like above, then you are good (I have replaced my fingerprint with 'X's)</p>
+</div>
+<div class="section" id="using-cloud-mesh">
+<h2>Using Cloud Mesh<a class="headerlink" href="#using-cloud-mesh" title="Permalink to this headline">¶</a></h2>
+<p>You can use following commands to play around with Cloud Mesh.</p>
+<p>Refresh:</p>
+<div class="highlight-python"><pre>$ cm r</pre>
+</div>
+<p>You will see</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Processing <a href="#id1"><span class="problematic" id="id2">|................................|</span></a> 10/10</div>
+<div class="line">Done.</div>
+</div>
+</div></blockquote>
+<p>Start VM:</p>
+<div class="highlight-python"><pre>$ cm start:1</pre>
+</div>
+<p>You will see</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Launching VM gregor-001</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Property</strong></td>
+<td><strong>Value</strong></td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>BUILD</td>
+</tr>
+<tr class="row-odd"><td>updated</td>
+<td>2013-03-01T10:17:23Z</td>
+</tr>
+<tr class="row-even"><td>metadata</td>
+<td>{}</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">Processing <a href="#id3"><span class="problematic" id="id4">|................................|</span></a> 10/10</div>
+<div class="line">Done.</div>
+</div>
+</div></blockquote>
+<p>Start 5 VMs in parallel:</p>
+<div class="highlight-python"><pre>$ cm par:5</pre>
+</div>
+<p>You will see</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Launching VM gregor-000</div>
+<div class="line">Launching VM gregor-001</div>
+<div class="line">Launching VM gregor-003</div>
+<div class="line">Launching VM gregor-004</div>
+<div class="line">Launching VM gregor-002</div>
+<div class="line">Done.</div>
+</div>
+</div></blockquote>
+<p>Reindex the already started VMs:</p>
+<div class="highlight-python"><pre>$ cm reindex</pre>
+</div>
+<p>You will see</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Skipping gregor-000</div>
+<div class="line">Skipping gregor-001</div>
+<div class="line">Renameing gregor-001 -&gt; gregor-002</div>
+<div class="line">Renameing gregor-002 -&gt; gregor-003</div>
+<div class="line">Renameing gregor-003 -&gt; gregor-004</div>
+<div class="line">Renameing gregor-004 -&gt; gregor-005</div>
+<div class="line">Processing <a href="#id5"><span class="problematic" id="id6">|................................|</span></a> 10/10</div>
+<div class="line">Done.</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+    </div>
+      <div class="page-toc page-sidebar span3 visible-desktop">
+        <div class="well"><ul class="nav nav-list">
+<li class="nav-header"><a class="reference internal" href="#">CM</a></li>
+<li><a class="reference internal" href="#use-virtualenv">Use virtualenv</a></li>
+<li><a class="reference internal" href="#using-cloud-mesh">Using Cloud Mesh</a></li>
+</ul>
+</div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+        &copy; Created as part of FutureGrid 2013, Gregor von Laszewski<br/>
+      Last updated on Mar 03, 2013<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cloud Mesh &mdash; Cloud Mesh Web 0.5 documentation</title>
+    <title>Contact &mdash; Cloud Mesh Web 0.5 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -34,8 +34,8 @@
     <script type="text/javascript" src="_static/bootstrap.scrollspy.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Cloud Mesh Web 0.5 documentation" href="index.html" />
-    <link rel="next" title="CM" href="cm.html" />
-    <link rel="prev" title="Instalation" href="instalation.html" />
+    <link rel="next" title="Instalation" href="instalation.html" />
+    <link rel="prev" title="cloudmesh" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   </head>
@@ -52,9 +52,9 @@
             <li class="dropdown">
   <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
   <ul class="current dropdown-menu">
-<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="">Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="instalation.html">Instalation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="">Cloud Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Cloud Mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cm.html">CM</a></li>
 </ul>
 
@@ -63,14 +63,14 @@
           
           
             
+  <li class="hidden-phone"><a href="index.html"
+         title="previous chapter">&laquo; cloudmesh</a></li>
   <li class="hidden-phone"><a href="instalation.html"
-         title="previous chapter">&laquo; Instalation</a></li>
-  <li class="hidden-phone"><a href="cm.html"
-         title="next chapter">CM &raquo;</a></li>
+         title="next chapter">Instalation &raquo;</a></li>
           
           
             <li>
-  <a href="_sources/intro.txt"
+  <a href="_sources/contact.txt"
          rel="nofollow">Source</a></li>
           
         </ul>
@@ -91,92 +91,41 @@
     <div class="content span9">
       
       
-  <div class="section" id="cloud-mesh">
-<h1>Cloud Mesh<a class="headerlink" href="#cloud-mesh" title="Permalink to this headline">¶</a></h1>
-<p>A project to interface easily with multiple clouds from the
-commandline and a command shell.</p>
-<div class="section" id="commands">
-<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
-<p>cm manage initialize --user&lt;name&gt; --password &lt;password&gt;</p>
+  <div class="section" id="contact">
+<h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h1>
+<p>For more info please contact</p>
 <blockquote>
-<div><ul class="simple">
-<li>connects to FG and retrieves important information for you to use</li>
-<li>uses an ssh connection to connect to a FG service to retrieve the
-information</li>
-<li>if the connection is refused n=5 times within the hour the</li>
-<li>account is disabled</li>
-<li>if the command is called more than 10 times a day the account is disabled</li>
-</ul>
+<div><p>Gregor von Laszewski</p>
+<p><a class="reference external" href="mailto:laszewski&#37;&#52;&#48;gmail&#46;com">laszewski<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
 </div></blockquote>
-<p>cm project list</p>
-<blockquote>
-<div>lists the projects a user is in</div></blockquote>
-<p>cm project --info &lt;number&gt;</p>
-<blockquote>
-<div><ul class="simple">
-<li>retrieves information about the project</li>
-<li>if the user is the manager or lead it returns member information</li>
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Gregor von Laszewski</li>
+<li>Pushkar Newaskar</li>
+<li>Shweta Balkrishna Patil</li>
+<li>Fugang Wang</li>
 </ul>
-</div></blockquote>
-<p>cm project --activate &lt;number&gt;</p>
-<blockquote>
-<div><ul class="simple">
-<li>activates charging for this project</li>
-<li>subsequent calls are charged against this project</li>
+</div>
+<div class="section" id="blog">
+<h2>Blog<a class="headerlink" href="#blog" title="Permalink to this headline">¶</a></h2>
+<p>A Blog is located at</p>
+<ul class="simple">
+<li><a class="reference external" href="http://cloudmesh.blogspot.com">http://cloudmesh.blogspot.com</a></li>
 </ul>
-</div></blockquote>
-<p>cm project --deactivate</p>
-<blockquote>
-<div><ul class="simple">
-<li>deactivates any charge of a project</li>
+</div>
+<div class="section" id="repository">
+<h2>Repository<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h2>
+<p>Important repositories are located at</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/futuregrid/flask_cm">https://github.com/futuregrid/flask_cm</a><ul>
+<li><a class="reference external" href="https://github.com/futuregrid/flask_cm/issues?sort=updated&amp;state=open">Issues</a></li>
+<li><a class="reference external" href="https://github.com/futuregrid/flask_cm/issues/milestones">Milestones</a></li>
+<li><a class="reference external" href="https://github.com/futuregrid/flask_cm">Code</a></li>
 </ul>
-</div></blockquote>
-<p>cm env</p>
-<blockquote>
-<div><ul class="simple">
-<li>prints the environment and its variables currently associated
-with cm</li>
+</li>
+<li><a class="reference external" href="https://github.com/futuregrid/cm">https://github.com/futuregrid/cm</a></li>
 </ul>
-</div></blockquote>
-<p>cm resource --list</p>
-<blockquote>
-<div><ul class="simple">
-<li>lists the resources available for the user</li>
-</ul>
-</div></blockquote>
-<p>cm service --list</p>
-<blockquote>
-<div><ul class="simple">
-<li>list the services in the cloud mesh</li>
-</ul>
-</div></blockquote>
-<p>cm service register</p>
-<blockquote>
-<div>see fg-inventory</div></blockquote>
-<p>cm resource register</p>
-<blockquote>
-<div>see fg-inventory</div></blockquote>
-<p>cm image --list</p>
-<blockquote>
-<div><ul class="simple">
-<li>list the images</li>
-</ul>
-</div></blockquote>
-<p>cm id --list</p>
-<blockquote>
-<div><ul class="simple">
-<li>list all ids and their types</li>
-</ul>
-</div></blockquote>
-<p>cm label --id &lt;id&gt;</p>
-<blockquote>
-<div><ul class="simple">
-<li>associates a human readable lable with an id</li>
-</ul>
-</div></blockquote>
-<p>cm create &lt;label&gt;</p>
-<p>cm destroy &lt;label&gt;</p>
-<p>cm terminate &lt;label&gt;</p>
 </div>
 </div>
 
@@ -184,8 +133,10 @@ with cm</li>
     </div>
       <div class="page-toc page-sidebar span3 visible-desktop">
         <div class="well"><ul class="nav nav-list">
-<li class="nav-header"><a class="reference internal" href="#">Cloud Mesh</a></li>
-<li><a class="reference internal" href="#commands">Commands</a></li>
+<li class="nav-header"><a class="reference internal" href="#">Contact</a></li>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#blog">Blog</a></li>
+<li><a class="reference internal" href="#repository">Repository</a></li>
 </ul>
 </div>
       </div>
