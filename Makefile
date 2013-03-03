@@ -145,18 +145,15 @@ ghphtml:
 	rm -rf $(DIR)
 	cd /tmp; git clone git://github.com/futuregrid/$(PROJECT).git
 	cp $(DIR)/Makefile .
-	cd $(DIR)/doc; ls; make html
+	cd $(DOC); ls; make html
 	rm -fr _static
 	rm -fr _source
-	rm -fr _themes
 	rm -fr *.html
 	cp -r $(DOC)/build/html/* .
 
 ghpgit:
-	git add . _sources _static _themes
-	gid add .
+	git add . _sources _static   
 	git commit -a -m "updating the github pages"
 	git push
 	git checkout master
-
 
