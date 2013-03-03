@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Virtualenv &mdash; Cloud Mesh Web 0.5 documentation</title>
+    <title>Cloud Mesh &mdash; Cloud Mesh Web 0.5 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -34,6 +34,7 @@
     <script type="text/javascript" src="_static/bootstrap.scrollspy.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Cloud Mesh Web 0.5 documentation" href="index.html" />
+    <link rel="prev" title="Instalation" href="instalation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   </head>
@@ -49,7 +50,9 @@
           
             <li class="dropdown">
   <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
-  <ul class="simple">
+  <ul class="current dropdown-menu">
+<li class="toctree-l1"><a class="reference internal" href="instalation.html">Instalation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="">Cloud Mesh</a></li>
 </ul>
 
 </li>
@@ -57,6 +60,8 @@
           
           
             
+  <li class="hidden-phone"><a href="instalation.html"
+         title="previous chapter">&laquo; Instalation</a></li>
           
           
             <li>
@@ -81,52 +86,12 @@
     <div class="content span9">
       
       
-  <div class="section" id="virtualenv">
-<h1>Virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p class="first"><strong>Step 1: Download virtualenv</strong></p>
-<blockquote>
-<div><p>Since you do not have super user priviledges, you need virtualenv in
-order to finish the installtion. You may download virtualenv.py by
-following command:</p>
-<div class="highlight-python"><pre>$ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py</pre>
-</div>
-</div></blockquote>
-</li>
-<li><p class="first"><strong>Step 2: Install virtualenv</strong></p>
-<blockquote>
-<div><p>After you downloaded virtualenv, you can install it by following
-command:</p>
-<div class="highlight-python"><pre>$ python virtualenv.py --system-site-packages ENV</pre>
-</div>
-</div></blockquote>
-</li>
-<li><p class="first"><strong>Step 3: Activate virtualenv</strong></p>
-<blockquote>
-<div><p>After installation of virtualenv, you can activate virtualenv by
-following command:</p>
-<div class="highlight-python"><pre>$ source ENV/bin/activate</pre>
-</div>
-</div></blockquote>
-</li>
-<li><p class="first"><strong>Step 4 (optional): modify your rc file</strong></p>
-<blockquote>
-<div><p>Go to your home directory, log in your .bashrc, .bash_profile, or .bash_login file and add:</p>
-<div class="highlight-python"><pre>  $ source ENV/bin/activate
-
-This way you do not forget to type it in next time you login</pre>
-</div>
-</div></blockquote>
-</li>
-</ul>
-</div>
-<div class="section" id="cloud-mesh">
+  <div class="section" id="cloud-mesh">
 <h1>Cloud Mesh<a class="headerlink" href="#cloud-mesh" title="Permalink to this headline">¶</a></h1>
 <p>A project to interface easily with multiple clouds from the
 commandline and a command shell.</p>
-</div>
 <div class="section" id="commands">
-<h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <p>cm manage initialize --user&lt;name&gt; --password &lt;password&gt;</p>
 <blockquote>
 <div><ul class="simple">
@@ -208,13 +173,13 @@ with cm</li>
 <p>cm destroy &lt;label&gt;</p>
 <p>cm terminate &lt;label&gt;</p>
 </div>
+</div>
 
 
     </div>
       <div class="page-toc page-sidebar span3 visible-desktop">
-        <div class="well"><ul>
-<li><a class="reference internal" href="#">Virtualenv</a></li>
-<li><a class="reference internal" href="#cloud-mesh">Cloud Mesh</a></li>
+        <div class="well"><ul class="nav nav-list">
+<li class="nav-header"><a class="reference internal" href="#">Cloud Mesh</a></li>
 <li><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </div>
@@ -228,7 +193,7 @@ with cm</li>
     </p>
     <p>
         &copy; Created as part of FutureGrid 2013, Gregor von Laszewski<br/>
-      Last updated on Mar 02, 2013<br/>
+      Last updated on Mar 03, 2013<br/>
     </p>
   </div>
 </footer>
