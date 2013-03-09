@@ -27,7 +27,40 @@ from novaclient.v1_1 import client
 def donotchange(fn):
     return fn
 
-class openstack:
+class BaseCloud:
+    def clear(self):
+        assert False, "Not implemented"
+    def connect(self):
+        assert False, "Not implemented"
+    def config (self, dict)
+        assert False, "Not implemented"
+    def find_user_id(self):
+        assert False, "Not implemented"
+    def _get_image_dict(self):
+        assert False, "Not implemented"
+    def _update_image_dict(self,information):
+        assert False, "Not implemented"
+        def _get_flavors_dict(self):
+    def _update_flafors_dict(self,information):        
+        assert False, "Not implemented"
+    def _get_servers_dict(self):
+        assert False, "Not implemented"
+    def _update_servers_dict(self,information):
+        assert False, "Not implemented"
+    def vm_create(self, name, flavor_name, image_id):
+        assert False, "Not implemented"
+    def vm_delete(self, id):
+        assert False, "Not implemented"
+    def vms_project(self, refresh=False):
+        assert False, "Not implemented"
+    def rename(self, old, new, id=None):
+        assert False, "Not implemented"
+    def usage(self, start, end, format='dict'):
+        assert False, "Not implemented"
+    def limits(self):        
+        assert False, "Not implemented"
+    
+class openstack(BaseCloud):
 
     type = "openstack"   # global var
     flavors = {}         # global var
@@ -52,6 +85,7 @@ class openstack:
     ######################################################################
     # initialize
     ######################################################################
+    # possibly make connext seperate
     def __init__(self,
                  label,
                  authurl=None,
@@ -104,6 +138,7 @@ class openstack:
             self.credential['OS_AUTH_URL']
         )
 
+    #config should have dict as parameter
     def config(self, label,
                authurl=None,
                project=None,
@@ -374,6 +409,7 @@ class openstack:
     # list user images
     ######################################################################
 
+    @donotchange
     def vms_user(self, refresh=False):
         """
         find my vms
@@ -415,6 +451,7 @@ class openstack:
     # delete images from a user
     ######################################################################
 
+    @donotchange
     def vms_delete_user(self):
         """
         find my vms and delete them
