@@ -24,6 +24,8 @@ from cloudmesh.cm_config import cm_config
 
 from novaclient.v1_1 import client
 
+def donotchange(fn):
+    return fn
 
 class openstack:
 
@@ -39,9 +41,11 @@ class openstack:
 
     _nova = nova
 
+    @donotchange
     def vms(self):
         return self.servers
 
+    @donotchange
     def credentials(self, cred):
         self.credential = cred
 
@@ -76,6 +80,10 @@ class openstack:
         called to obtain again data.
         """
         self.type = "openstack"
+        self._clear()
+
+    @donotchange
+    def _clear(self):
         self.flavors = {}
         self.images = {}
         self.servers = {}
@@ -221,6 +229,7 @@ class openstack:
     # print
     ######################################################################
 
+    @donotchange
     def __str__(self):
         """
         print everything but the credentials that is known about this
@@ -237,6 +246,7 @@ class openstack:
     # get methods
     ######################################################################
 
+    @donotchange
     def type():
         return self.type
 
@@ -244,73 +254,75 @@ class openstack:
     # refresh
     ######################################################################
 
-    """
-        def _get_image_dict():
-                return _self.cloud.images.list(detailed=True)
+    def _get_image_dict(self):
+        return self.cloud.images.list(detailed=True)
 
-        def _update_image_dict(image):
-                del image.manager
-                del image._info
-                del image._loaded
-                # del information.links
-                return (image.id, image)
+    def _update_image_dict(self,information):
+        flavor = information.__dict__
+        del image.manager
+        del image._info
+        del image._loaded
+        # del information.links
+        id = information.id
+        return (image.id, image)
+    
+    def _get_flavors_dict(self):
+        return self.cloud.flavors.list()
 
-    """
-    
-    
+    def _update_flafors_dict(self,information):
+        flavor = information.__dict__
+        # clean not neaded info
+        del flavor.manager
+        del flavor._info
+        del flavor._loaded
+        # del information.links
+        id = information.name
+        return (id, flavor)
+
+    def _get_servers_dict(self):
+        return self.cloud.servers.list(detailed=True)
+
+    def _update_servers_dict(self,information):
+        vm = information.__dict__
+        #pp.pprint(vm)
+        delay = vm['id']
+        del vm['manager']
+        del vm['_info']
+        del vm['_loaded']
+        # del information.links
+        id = information.id
+        return (id, vm)
+
+    @donotchange
     def refresh(self, type=None):
 
         time_stamp = datetime.now().strftime('%Y-%m-%dT%H-%M-%SZ')
         selection = ""
         if type:
             selection = type.lower()[0]
-            all = selection == 'a'
-        else:
-            all = True
 
-        if selection == 'i' or all:
-            # list = _get_image_dict()
-            list = self.cloud.images.list(detailed=True)
-            for information in list:
-                # (id, image) = _update_image_dict(information)
-                image = information.__dict__
-                del image.manager
-                del image._info
-                del image._loaded
-                # del information.links
-                self.images[information.id] = image
-                self.images[information.id]['cm_refresh'] = time_stamp
+        list_function = self._get_servers_dict
+        update_function = self._update_servers_dict
+        if selection == 'a':
+            self.refresh("images")
+            self.refersh("flavors")
+            self.refresh("vms")
+            return
+        elif selection == 'i':
+            list_function = self._get_images_dict
+            update_function = self._update_images_dict
+        elif selection == 'f':
+            list_function = self._get_flavors_dict
+            update_function = self._update_flavor_dict
+        elif selection == 's':
+            list_function = self._get_servers_dict
+            update_function = self._update_servers_dict
 
-        if selection == 'f' or all:
-            # list = _get_floavors_list()
-            list = self.cloud.flavors.list()
-            for information in list:
-                #flavor = _update_flavors_dict(information)
-                flavor = information.__dict__
-                # clean not neaded info
-                del flavor.manager
-                del flavor._info
-                del flavor._loaded
-                # del information.links
-                self.flavors[information.name] = flavor
-                self.flavors[information.name]['cm_refresh'] = time_stamp
-
-        if selection == 'v' or selection == None or all:
-            #list = _get_servers_list()
-            list = self.cloud.servers.list(detailed=True)
-
-            for information in list:
-                # vm = _update_servers_dict(information)
-                vm = information.__dict__
-                #pp.pprint(vm)
-                delay = vm['id']
-                del vm['manager']
-                del vm['_info']
-                del vm['_loaded']
-                # del information.links
-
-                self.servers[information.id] = vm
-                self.servers[information.id]['cm_refresh'] = time_stamp
+        list = list_function()
+        for information in list:
+            (id, image) = update_function(information)
+            self.images[id] = image
+            self.images[id]['cm_refresh'] = time_stamp
 
     ######################################################################
     # create a vm
@@ -347,6 +359,7 @@ class openstack:
         # return just the id or None if its deleted
         return vm
 
+    @donotchange
     def vms_delete(self, ids):
         """
         delete many vms by id. ids is an array
@@ -416,6 +429,7 @@ class openstack:
     # find
     ######################################################################
 
+    @donotchange
     def find(self, key, value=None):
         ids = []
         if key == 'user_id' and value == None:
@@ -438,6 +452,7 @@ class openstack:
             vm = self.cloud.servers.update(id, new)
         return
 
+    @donotchange
     def reindex(self, prefixold, prefix, index_format):
         all = self.find('user_id')
         counter = 1
@@ -449,6 +464,7 @@ class openstack:
                 vm = self.cloud.servers.update(id, new)
             counter += 1
 
+    @donotchange
     def reindex(self, prefix, index_format):
         all = self.find('user_id')
         counter = 1
@@ -472,7 +488,9 @@ class openstack:
     ######################################################################
     # EXTRA
     ######################################################################
+    # will be moved into one class
 
+    @donotchange
     def table_col_to_dict(self, body):
         result = {}
         for element in body:
@@ -481,7 +499,8 @@ class openstack:
             result[key] = value
         return result
 
-    Def Table_matrix(self, text, format=None):
+    @donotchange
+    def Table_matrix(self, text, format=None):
         lines = text.splitlines()
         headline = lines[0].split("|")
         headline = headline[1:-1]
@@ -513,6 +532,9 @@ class openstack:
     ######################################################################
     # CLI call of ussage
     ######################################################################
+
+    # will be moved into utils
+    @donotchange
     def parse_isotime(self, timestr):
         """Parse time from ISO 8601 format"""
         try:
@@ -585,7 +607,7 @@ if __name__ == "__main__":
     table_test = False
     image_test = False
     vm_test = False
-    cloud_test = False
+    cloud_test = True
 
     if credential_test:
         credential = cm_config('india-openstack')
@@ -593,13 +615,13 @@ if __name__ == "__main__":
 
     cloud = openstack("india-openstack")
 
-    cloud.novaclient_dump()
+    #cloud.novaclient_dump()
 
-    print json.dumps(cloud.usage("2000-01-01T00:00:00", "2013-12-31T00:00:00"), indent=4)
+    #print json.dumps(cloud.usage("2000-01-01T00:00:00", "2013-12-31T00:00:00"), indent=4)
 
     # print json.dumps(cloud.limits(), indent=4)
 
-    sys.exit()
+
     # print json.dumps(cloud.usage("2000-01-01", "2013-12-31"), indent=4)
     # print json.dumps(cloud.usage("2000-01-01", "2013-12-31",format=None),
     # indent=4)
@@ -636,7 +658,7 @@ if __name__ == "__main__":
         cloud.refresh()
         print cloud
 
-    print cloud.find_user_id()
+    #print cloud.find_user_id()
 
     """
     name ="%s-%04d" % (cloud.credential["OS_USERNAME"], 1)
