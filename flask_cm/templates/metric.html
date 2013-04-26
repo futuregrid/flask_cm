@@ -91,6 +91,7 @@
           </div>
   </form>
 <table>
+	<caption><h4>Table 1. Summary</h4></caption>
    <tr>
 	   <th colspan="1"> Start date</th>
 	   <th>End date</th>
@@ -128,13 +129,13 @@
 	   </tr>
 	   {% endif %}
    </table> 
-
 <table>
+	<caption><h3>Table 2. List of instances </h3></caption>
 	<tr>
 		<th>No</th>
 		<th>instanceId</th>
-		<th>t_start</th>
-		<th>t_end</th>
+		<th>start time</th>
+		<th>end time</th>
 		<th>duration (sec)</th>
 		<th>ccvm</th>
 		<th>hostname</th>
@@ -146,7 +147,7 @@
 		<td>{{ instance["t_start"].strftime("%a, %d %b %Y (%H:%M:%S)") }}</td>
 		<td>{{ instance["t_end"].strftime("%a, %d %b %Y (%H:%M:%S)") }}</td>
 		<td>{{ instance["duration"] }} </td>
-		<td>{{ instance["ccvm"] }} </td>
+		<td>cores: {{ instance["ccvm"]["cores"] }}, memories: {{ instance["ccvm"]["mem"] }}, disks: {{ instance["ccvm"]["disk"] }} </td>
 		<td>{{ instance["hostname"] }}</td>
 		<td>{{ instance["platform"] }}</td>
 	</tr>
