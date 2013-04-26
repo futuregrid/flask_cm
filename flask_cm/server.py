@@ -654,7 +654,7 @@ def metric():
 
     return render_template('metric.html',
                            clouds=clouds.get(),
-                           metrics=clouds.get_metrics(args),
+                           metrics=clouds.plugins.metrics.get(args),
                            pages=pages,
                            active=make_active('metric'),
                            version=version)
