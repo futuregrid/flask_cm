@@ -129,10 +129,14 @@
 		   <td> {{ metrics["stats"]["instance.cloudPlatformIdRef"]["disks"]["Total"]}} </td>
 		   <td></td>
 	   </tr>
+	   {% else %}
+	   <tr>
+		   <td colspan="8" align="center">not available</td>
+	   </tr>
 	   {% endif %}
    </table> 
 <table>
-	<caption><h3>Table 2. List of instances </h3></caption>
+	<caption><h4>Table 2. List of instances </h4></caption>
 	<tr>
 		<th>No</th>
 		<th>instanceId</th>
@@ -143,7 +147,8 @@
 		<th>hostname</th>
 		<th>platform</th>
 	</tr>
-		{% for instance in instances %}
+	{% for instance in instances %}
+	<tr>
 		<td>{{ loop.index }}</td>
 		<td>{{ instance['instanceId'] }}</td>
 		<td>{{ instance["t_start"].strftime("%a, %d %b %Y (%H:%M:%S)") }}</td>
@@ -154,6 +159,10 @@
 		<td>{{ instance["platform"] }}</td>
 	</tr>
 	{% endfor %}
+	{% if instances == [] %}
+	<tr>
+		<td colspan="8" align="center">not available</td>
+	{% endif %}
 </table>
 
 {% endblock %}
