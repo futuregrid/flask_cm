@@ -127,6 +127,30 @@
 		   <td></td>
 	   </tr>
 	   {% endif %}
- </table> 
+   </table> 
+
+<table>
+	<tr>
+		<th>No</th>
+		<th>instanceId</th>
+		<th>t_start</th>
+		<th>t_end</th>
+		<th>duration (sec)</th>
+		<th>ccvm</th>
+		<th>hostname</th>
+		<th>platform</th>
+	</tr>
+		{% for instance in instances %}
+		<td>{{ loop.index }}</td>
+		<td>{{ instance['instanceId'] }}</td>
+		<td>{{ instance["t_start"].strftime("%a, %d %b %Y (%H:%M:%S)") }}</td>
+		<td>{{ instance["t_end"].strftime("%a, %d %b %Y (%H:%M:%S)") }}</td>
+		<td>{{ instance["duration"] }} </td>
+		<td>{{ instance["ccvm"] }} </td>
+		<td>{{ instance["hostname"] }}</td>
+		<td>{{ instance["platform"] }}</td>
+	</tr>
+	{% endfor %}
+</table>
 
 {% endblock %}

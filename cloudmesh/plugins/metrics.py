@@ -1,16 +1,16 @@
 import sys
 try:
-    from fgmetric.FGMetricsAPI import FGMetricsAPI
+    from fgmetric.shell.FGMetricAPI import FGMetricAPI
 except:
     print "fgmetric module not found"
 
 class MetricsPlugin:
 
     def __init__(self):
-        self.api = FGMetricsAPI()
+        self.api = FGMetricAPI()
         self.metrics = None
 
-    def get_instances(self, args):
+    def get_instances(self):
         """Get list of instances
         Args:
             args(dict): including a user id

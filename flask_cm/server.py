@@ -652,9 +652,18 @@ def metric():
             "period": request.args.get('period', ''),
             "metric": request.args.get('metric', '')}
 
+    try:
+        metrics = clouds.plugins.metrics.get(args)
+        instances = clouds.plugins.metrics.get_instances()
+    except:
+        metrics = {}
+        instances = {}
+        print sys.exc_info()
+
     return render_template('metric.html',
                            clouds=clouds.get(),
-                           metrics=clouds.plugins.metrics.get(args),
+                           metrics=metrics,
+                           instances=instances,
                            pages=pages,
                            active=make_active('metric'),
                            version=version)
