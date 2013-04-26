@@ -18,7 +18,7 @@ from openstack.cm_compute import openstack
 
 from eucalyptus.eucalyptus_new import eucalyptus
 from azure.cm_azure import cm_azure as azure 
-
+from cm_plugins import CmPlugins
 
 class cloudmesh:
 
@@ -44,6 +44,7 @@ class cloudmesh:
         self.clear()
         #Read Yaml File to find all the cloud configurations present
         self.config()
+        self.plugins = CmPlugins()
 
     def clear(self):
         self.clouds = {}
