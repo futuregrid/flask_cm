@@ -10,6 +10,16 @@ class MetricsPlugin:
         self.api = FGMetricAPI()
         self.metrics = None
 
+    def get_userlist(self):
+        """get list of userinfo"""
+        if not self.api:
+            return
+
+        userlist = self.api.get_userinfo()
+        self.userlist = sorted(userlist, key = lambda t:
+                               str(t["first_name"]).lower())
+        return self.userlist
+
     def get_instances(self):
         """Get list of instances
         Args:

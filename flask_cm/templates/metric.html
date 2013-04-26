@@ -6,8 +6,8 @@
 <script>
     $(function(){
     window.prettyPrint && prettyPrint();
-    var startDate = new Date(2012,1,01);
-    var endDate = new Date(2012,12,31);
+    var startDate = new Date(2010,1,01);
+    var endDate = new Date(2013,03,31);
     $('#dp4').datepicker()
     .on('changeDate', function(ev){
     if (ev.date.valueOf() > endDate.valueOf()){
@@ -35,21 +35,21 @@
 	    })
     </script>
     <form id="frmDate" method="get">
-	    <input name="s_date" id="s_date" value="2012-01-01T00:00:00" type="hidden">
-	    <input name="e_date" id="e_date" value="2012-12-31T23:59:59" type="hidden">
+	    <input name="s_date" id="s_date" value="2010-01-01T00:00:00" type="hidden">
+	    <input name="e_date" id="e_date" value="2013-03-31T23:59:59" type="hidden">
  <div class="well">
    <table class="table">
      <thead>
        <tr>
-	 <th>Start date<a href="#" class="btn small" id="dp4" data-date-format="yyyy-mm-dd" data-date="2012-01-01">Change</a></th>
-	 <th>End date<a href="#" class="btn small" id="dp5" data-date-format="yyyy-mm-dd" data-date="2012-12-31">Change</a>
+	 <th>Start date<a href="#" class="btn small" id="dp4" data-date-format="yyyy-mm-dd" data-date="2010-01-01">Change</a></th>
+	 <th>End date<a href="#" class="btn small" id="dp5" data-date-format="yyyy-mm-dd" data-date="2013-03-31">Change</a>
 	 </th>
 	 </tr>
        </thead>
      <tbody>
        <tr>
-	 <td id="startDate">2012-01-01</td>
-	 <td id="endDate">2012-12-31</td>
+	 <td id="startDate">2010-01-01</td>
+	 <td id="endDate">2013-03-31</td>
  </tr>
  </table>
  <table class="table">
@@ -67,10 +67,12 @@
  <tr>
 	 <td>
 		 <select name="user" multiple="multiple">
-			 <option value="fuwang">Fugang Wang</option>
-			 <option value="gvonlasz" selected="selected">Gregor Laszewski</option>
-			 <option value="hrlee">Hyungro Lee</option>
-			 <option>Other users</option>
+			 {% for user in userlist %}
+			 {% if (user["first_name"] == "") or (user["first_name"] == None) %}
+			 {% else %}
+			 <option value="{{ user["username"] }}">{{ user["first_name"] }} {{ user["last_name"] }}</option>
+			 {% endif %}
+			 {% endfor %}
 		 </select>
 	 </td>
 	 <td>
