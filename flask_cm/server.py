@@ -16,6 +16,7 @@ try:
 except:
     print "xterm not suppported"
 import yaml
+from docopt import docopt
 
 
 #### setting up reading path for the use of yaml################
@@ -727,6 +728,21 @@ def update_key_pair(cloud):
                            path = filePath,
                            keyname = keyname,
                            cloud_name = cloud)
+def docopt_parse():
+    """flask_cm server.
+
+    Usage:
+        server.py [--host=HOST] [--port=PORT]
+        server.py -h | --help | --version
+
+    Options:
+        -h, --help             Show this screen.
+        --version              Print version and exit.
+        --host HOST            Target host [default: localhost].
+        -p, --port PORT        Target port [default: 5000].
+    """
+    return docopt(docopt_parse.__doc__, version = version)
 
 if __name__ == "__main__":
-    app.run()
+    args = docopt_parse()
+    app.run(host=args["--host"], port=int(args["--port"]))
