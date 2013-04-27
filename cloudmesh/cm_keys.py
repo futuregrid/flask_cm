@@ -66,24 +66,24 @@ class cm_keys:
             key = self.config.data["cloudmesh"]["keys"]["default"]
         else:
             key = name
-        return self.config.data["cloudmesh"]["keys"]["keylist"][key]
+        value = self.config.data["cloudmesh"]["keys"]["keylist"][key]
+        return value
 
     def __getitem__(self,name):
-
+        value = self._getvalue(name)
         key_type = self.type(name)
+        
         if key_type == "file":
-            filename = self.config.data["cloudmesh"]["keys"]["keylist"][name]
-            value = self._get_key_from_file(filename)
-        else:
-            value = self._getvalue(name)
+            value = self._get_key_from_file(value)
+
         return value
             
     def __setitem__(self, name, value):
         if name == 'default':
-            key = self.config.data["cloudmesh"]["keys"]["default"]
+            self.config.data["cloudmesh"]["keys"]["default"] = value
+            return
         else:
-            key = name
-        self.config.data["cloudmesh"]["keys"]["keylist"][key] = value
+            self.config.data["cloudmesh"]["keys"]["keylist"][name] = value
 
     def delete(self, name):
         """ not tested"""
