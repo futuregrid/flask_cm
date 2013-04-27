@@ -3,6 +3,7 @@ import os
 from string import Template
 import base64
 import hashlib
+import sys
 
 def key_fingerprint(key_string):
     key = base64.decodestring(key_string)
@@ -32,12 +33,20 @@ def key_validate(type,filename):
 
 class cm_keys:
 
+    filename = None
+    
     def __init__(self, filename=None):
         """initializes based on cm_config and returns pointer to the keys dict."""
-        self.filename = filename
-        if self.filename == None:
+        # Check if the file exists
+        if filename == None:
             self.config = cm_config()
         else:
+            self.filename = self._path_expand(filename)
+            try:
+                with open(self.filename): pass
+            except IOError:
+                print 'ERROR: cm_keys, file "%s" does not exist' % self.filename
+                sys.exit()
             self.config = cm_config(self.filename)
 
     def type(self, name):
@@ -76,8 +85,8 @@ class cm_keys:
             key = name
         self.config.data["cloudmesh"]["keys"]["keylist"][key] = value
 
-    def del(self, name):
-        """ not tested"
+    def delete(self, name):
+        """ not tested"""
         if name == 'default':
             key = self.config.data["cloudmesh"]["keys"]["default"]
             newdefault
@@ -96,6 +105,7 @@ class cm_keys:
         """ returns a string with expanded variavble """
         template = Template(text)
         result = template.substitute(os.environ)
+        result = os.path.expanduser(result)
         return result
 
     def _get_key_from_file(self, filename):

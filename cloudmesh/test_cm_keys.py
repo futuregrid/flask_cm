@@ -26,18 +26,28 @@ def HEADING(txt):
 
 class Test_cloudmesh:
 
-
-    filename = "credentials-example.yaml"
     #filename = None
+    #filename = "credentials-example-keys.yaml"
+    filename = "$HOME/.futuregrid/cloudmesh-new.yaml"
+
 
     def setup(self):
-        self.keys = cm_keys()
+        self.keys = cm_keys(self.filename)
 
     def tearDown(self):
         pass
 
+    def test00_file(self):
+        HEADING("FILE")
+        try:
+            self.keys = cm_keys("wrong file")
+        except:
+            pass
+            
+'''        
     def test01_print(self):
-        #print self.keys
+        HEADING("PRINT")
+        print self.keys
         pass
     
     def test01_names(self):
@@ -96,3 +106,4 @@ class Test_cloudmesh:
 
 
     
+'''
