@@ -687,8 +687,6 @@ def page(path):
 
 @app.route('/keys/',methods=['GET','POST'])
 def managekeys():
-    print ">>>>> KEY"
-    
     active = make_active('profile')
 
     time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
