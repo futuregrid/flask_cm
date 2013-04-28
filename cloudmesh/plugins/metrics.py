@@ -9,6 +9,8 @@ class MetricsPlugin:
     def __init__(self):
         self.api = FGMetricAPI()
         self.metrics = None
+        self.userlist = None
+        self.projectlist = None
 
     def get_userlist(self):
         """get list of userinfo"""
@@ -19,6 +21,16 @@ class MetricsPlugin:
         self.userlist = sorted(userlist, key = lambda t:
                                str(t["first_name"]).lower())
         return self.userlist
+
+    def get_projectlist(self):
+        """get list of projectinfo"""
+        if not self.api:
+            return
+
+        projectlist = self.api.get_projectinfo()
+        self.projectlist = projectlist
+        #self.projectlist = sorted(projectlist, key = lambda t: str(
+        return self.projectlist
 
     def get_instances(self):
         """Get list of instances

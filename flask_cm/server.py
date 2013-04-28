@@ -656,10 +656,12 @@ def metric():
         metrics = clouds.plugins.metrics.get(args)
         instances = clouds.plugins.metrics.get_instances()
         userlist = clouds.plugins.metrics.get_userlist()
+        projectlist = clouds.plugins.metrics.get_projectlist()
     except:
         metrics = {}
         instances = {}
         userlist = {}
+        projectlist = {}
         print sys.exc_info()
 
     return render_template('metric.html',
@@ -667,6 +669,7 @@ def metric():
                            metrics=metrics,
                            instances=instances,
                            userlist=userlist,
+                           projectlist=projectlist,
                            pages=pages,
                            active=make_active('metric'),
                            version=version)
