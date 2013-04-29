@@ -56,6 +56,9 @@
 	 <thead>
 		 <tr>
 			 <th>
+				 Project Name
+			 </th>
+			 <th>
 				 User Name
 			 </th>
 			 <th>
@@ -64,7 +67,14 @@
 		 </tr>
 	 </thead>
 	 <tbody>
- <tr>
+		 <tr>
+			 <td>
+				 <select name="project" multiple="multiple">
+					 {% for key in projectlist.keys() %}
+					 <option value="{{ projectlist[key]["ProjectId"] }}">fg-{{ projectlist[key]["ProjectId"] }} {{ projectlist[key]["Title"] }}</option>
+					 {% endfor %}
+				 </select>
+			 </td>
 	 <td>
 		 <select name="user" multiple="multiple">
 			 {% for user in userlist %}
@@ -84,7 +94,7 @@
 	 </td>
  </tr>
  <tr>
-	 <td colspan="2">
+	 <td colspan="3">
 	  <input class="btn" type="submit" value="Submit">
 	 </td>
  </tr>
