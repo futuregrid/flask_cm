@@ -11,6 +11,7 @@ class MetricsPlugin:
         self.metrics = None
         self.userlist = None
         self.projectlist = None
+        self.userinfo = None
 
     def get_userlist(self):
         """get list of userinfo"""
@@ -31,6 +32,13 @@ class MetricsPlugin:
         self.projectlist = projectlist
         #self.projectlist = sorted(projectlist, key = lambda t: str(
         return self.projectlist
+
+    def get_userinfo(self, ownerid):
+        """Get user info"""
+        for user in self.userlist:
+            if user['username'] == ownerid:
+                self.userinfo = user
+                return self.userinfo
 
     def get_instances(self):
         """Get list of instances

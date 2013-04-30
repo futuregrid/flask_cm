@@ -105,7 +105,7 @@
 <table>
 	<caption><h4>Table 1. Summary</h4></caption>
    <tr>
-	   <th colspan="1"> Start date</th>
+	   <th> Start date</th>
 	   <th>End date</th>
 	   <th>portal id</th>
 	   <th>vm count</th>
@@ -113,11 +113,10 @@
 	   <th>cores</th>
 	   <th>mem</th>
 	   <th>disks</th>
-	   <br>
    </tr>
    {% if "All" in metrics["stats"] %}
 	   <tr>
-		   <td colspan="1"> {{metrics['start_date']}}</td>
+		   <td> {{metrics['start_date']}}</td>
 		   <td> {{ metrics['end_date'] }}</td>
 		   <td> {{ metrics["ownerid"] }} </td>
 		   <td> {{ metrics["stats"]["All"]["count"]["Total"] }} </td>
@@ -125,11 +124,10 @@
 		   <td> {{ metrics["stats"]["All"]["cores"]["Total"]}} </td>
 		   <td> {{ metrics["stats"]["All"]["mem"]["Total"]}} </td>
 		   <td> {{ metrics["stats"]["All"]["disks"]["Total"]}} </td>
-		   <td></td>
 	   </tr>
 	   {% elif "instance.cloudPlatformIdRef" in metrics["stats"] %}
 	   <tr>
-		   <td colspan="1"> {{metrics['start_date']}}</td>
+		   <td> {{metrics['start_date']}}</td>
 		   <td> {{ metrics['end_date'] }}</td>
 		   <td> {{ metrics["ownerid"] }} </td>
 		   <td> {{ metrics["stats"]["instance.cloudPlatformIdRef"]["count"]["Total"] }} </td>
@@ -137,7 +135,6 @@
 		   <td> {{ metrics["stats"]["instance.cloudPlatformIdRef"]["cores"]["Total"]}} </td>
 		   <td> {{ metrics["stats"]["instance.cloudPlatformIdRef"]["mem"]["Total"]}} </td>
 		   <td> {{ metrics["stats"]["instance.cloudPlatformIdRef"]["disks"]["Total"]}} </td>
-		   <td></td>
 	   </tr>
 	   {% else %}
 	   <tr>
@@ -145,6 +142,8 @@
 	   </tr>
 	   {% endif %}
    </table> 
+   {% set project = metric_obj.get_userinfo(metrics["ownerid"])["projects"] %}
+   {{ project }} 
 <table>
 	<caption><h4>Table 2. List of instances </h4></caption>
 	<tr>

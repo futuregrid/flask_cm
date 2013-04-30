@@ -657,6 +657,7 @@ def metric():
         instances = clouds.plugins.metrics.get_instances()
         userlist = clouds.plugins.metrics.get_userlist()
         projectlist = clouds.plugins.metrics.get_projectlist()
+        metric_obj = clouds.plugins.metrics
     except:
         metrics = {}
         instances = {}
@@ -670,6 +671,7 @@ def metric():
                            instances=instances,
                            userlist=userlist,
                            projectlist=projectlist,
+                           metric_obj=metric_obj,
                            pages=pages,
                            active=make_active('metric'),
                            version=version)
