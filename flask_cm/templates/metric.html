@@ -56,7 +56,7 @@
 	 <thead>
 		 <tr>
 			 <th>
-				 Project Name
+				 Project Name 
 			 </th>
 			 <th>
 				 User Name
@@ -74,6 +74,8 @@
 					 <option value="{{ projectlist[key]["ProjectId"] }}">fg-{{ projectlist[key]["ProjectId"] }} {{ projectlist[key]["Title"] }}</option>
 					 {% endfor %}
 				 </select>
+				 <br>
+				 Total: {{ projectlist|length }}
 			 </td>
 	 <td>
 		 <select name="user" multiple="multiple">
@@ -84,6 +86,8 @@
 			 {% endif %}
 			 {% endfor %}
 		 </select>
+		 <br> 
+		 Total: {{ userlist|length }}
 	 </td>
 	 <td>
 		 <select name="cloud" multiple="multiple">
@@ -143,7 +147,9 @@
 	   {% endif %}
    </table> 
    {% set project = metric_obj.get_userinfo(metrics["ownerid"])["projects"] %}
+   {#
    {{ project }} 
+   #}
 <table>
 	<caption><h4>Table 2. List of instances </h4></caption>
 	<tr>
@@ -168,7 +174,7 @@
 		<td>{{ instance["platform"] }}</td>
 	</tr>
 	{% endfor %}
-	{% if instances == [] %}
+	{% if instances == [] or not instances %}
 	<tr>
 		<td colspan="8" align="center">not available</td>
 	{% endif %}
