@@ -57,7 +57,6 @@ class MetricsPlugin:
             return
 
         try:
-            args["user"] = args["user"] or self.user
             self._set_api_vars(args)
             # print args
             stats = self.api._set_dict_vars()
@@ -84,6 +83,7 @@ class MetricsPlugin:
             pass
 
     def _set_api_vars(self, args):
+        args["user"] = args["user"] or self.user
         self.api.set_date(args["s_date"], args["e_date"])
         self.api.set_metric(
             "count runtime cores mem disks")  # args["metric"])
