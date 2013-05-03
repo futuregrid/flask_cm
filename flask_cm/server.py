@@ -650,7 +650,8 @@ def metric():
             "cloud": request.args.get('cloud', ''),
             "host": request.args.get('host', ''),
             "period": request.args.get('period', ''),
-            "metric": request.args.get('metric', '')}
+            "metric": request.args.get('metric', ''),
+            "groupby": request.args.get('groupby', '')}
 
     try:
         metrics = clouds.plugins.metrics.get(args)

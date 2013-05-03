@@ -91,6 +91,7 @@ class MetricsPlugin:
         self.api.set_cloud(args["cloud"])
         self.api.set_hostname(args["host"])
         self.api.set_period(args["period"])
+        self.api.set_groupby(args["groupby"])
 
     def get_metrics_cli(self, args):
         """ Get usage data from FG Metric CLI"""
