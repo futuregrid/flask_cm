@@ -75,7 +75,7 @@ def DEBUG(label, var):
 
 def main():
     default_path = '.futuregrid/novarc'
-    arguments = docopt(__doc__, version='0.8')
+    arguments = docopt(__doc__, version='0.8.1')
 
     DEBUG("arguments", arguments)
     
