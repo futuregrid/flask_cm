@@ -648,6 +648,7 @@ def metric():
             "e_date": request.args.get('e_date', ''),
             "user": request.args.get('user', ''),
             "cloud": request.args.get('cloud', ''),
+            "project": request.args.get('project', ''),
             "host": request.args.get('host', ''),
             "period": request.args.get('period', ''),
             "metric": request.args.get('metric', ''),

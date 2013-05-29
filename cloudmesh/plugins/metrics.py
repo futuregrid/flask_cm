@@ -88,6 +88,7 @@ class MetricsPlugin:
         self.api.set_metric(
             "count runtime cores mem disks")  # args["metric"])
         self.api.set_user(args["user"])
+        self.api.set_project(args["project"])
         self.api.set_cloud(args["cloud"])
         self.api.set_hostname(args["host"])
         self.api.set_period(args["period"])
